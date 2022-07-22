@@ -50,13 +50,13 @@ const createShortUrl = async function (req, res) {
                 status: false,
                 msg: 'please enter valid url'
             })
-
+               
         // to check the longurl code in cachememory 
         let checkLongUrl = await GET_ASYNC(`${longUrl}`)
         if(checkLongUrl){
             return res.status(400).send({
                 status: false,
-                message: "link is already shorted",
+                message: "link is already shorted you can copy this shorturl",
                 data:JSON.parse(checkLongUrl)
             })
         }
@@ -66,7 +66,7 @@ const createShortUrl = async function (req, res) {
         if (checkUniqueUrl) {
             return res.status(400).send({
                 status: false,
-                message: "link is already shorted",
+                message: "link is already shorted you can copy this shorturl",
                 data: checkUniqueUrl
             })
         }
@@ -113,7 +113,7 @@ const redirectLongUrl = async function (req, res) {
             status: false,
             msg: 'Please enter the url code between 7-14 character'
         })
-       
+     
         // to check the urlcode in cache memory
         let cahcedProfileData = await GET_ASYNC(`${urlCode}`)
         if (cahcedProfileData) {
